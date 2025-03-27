@@ -1,0 +1,20 @@
+{
+    "name": "EntryPoint",
+    "rootNamespace": "Game.EntryPoint",
+    "references": [
+        "GUID:8152fba83f327194aa5ec28fa80e7bbf",
+        "GUID:a488b0fffc3328d4aa7f4e911bd4d306",
+        "GUID:0e779a2afcf91344599733a2314d1c19",
+        "GUID:fc3bfa76141fb5d4f8c66186b3df43d8",
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

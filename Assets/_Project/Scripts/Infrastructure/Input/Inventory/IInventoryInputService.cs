@@ -1,7 +1,7 @@
 using System;
 using UniRx;
 
-namespace Game.Infrastructure.Inventory
+namespace Game.Infrastructure.Input
 {
     public interface IInventoryInputService
     {

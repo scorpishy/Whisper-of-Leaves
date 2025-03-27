@@ -1,5 +1,5 @@
-using Game.EntryPoint.Configs;
 using Game.Infrastructure.Audio;
+using Game.Infrastructure.Configs;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;

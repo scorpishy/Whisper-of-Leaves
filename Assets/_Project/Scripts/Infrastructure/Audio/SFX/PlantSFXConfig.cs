@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.EntryPoint.Configs
+namespace Game.Infrastructure.Configs
 {
     [CreateAssetMenu(fileName = "SFXConfig", menuName = "Configs/Audio/SFX Config", order = 1)]
     public class PlantSFXConfig : ScriptableObject

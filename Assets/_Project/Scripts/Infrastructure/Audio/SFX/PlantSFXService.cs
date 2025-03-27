@@ -1,7 +1,7 @@
 using System;
 using Game.Domain.Garden;
 using Game.Domain.Plant;
-using Game.EntryPoint.Configs;
+using Game.Infrastructure.Configs;
 using UniRx;
 using UnityEngine;
 

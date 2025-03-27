@@ -2,6 +2,7 @@ using Game.Domain.Inventory;
 using UniRx;
 using System;
 using VContainer;
+using Game.Infrastructure.Input;
 
 namespace Game.Infrastructure.Inventory
 {

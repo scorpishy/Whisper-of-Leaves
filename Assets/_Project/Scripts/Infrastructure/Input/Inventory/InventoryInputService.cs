@@ -2,7 +2,7 @@ using System;
 using UniRx;
 using UnityEngine.InputSystem;
 
-namespace Game.Infrastructure.Inventory
+namespace Game.Infrastructure.Input
 {
     public class InventoryInputService : IInventoryInputService, IDisposable
     {

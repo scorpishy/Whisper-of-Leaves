@@ -1,3 +1,4 @@
+using Game.Infrastructure.Input;
 using Game.Infrastructure.Inventory;
 using Game.Presentation.Inventory;
 using UnityEngine;
