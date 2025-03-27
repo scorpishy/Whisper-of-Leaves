@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/_Project/Scripts/Presentation/Harvest/HarvestStyles.uss?fileID=7433441132597879392&amp;guid=d2aa547472cb3be4fba9f02ec7865be6&amp;type=3#HarvestStyles" />
+    <ui:VisualElement class="harvest-panel">
+        <ui:Label name="fruit-label" text="Fruits: 0" class="harvest-panel__label" />
+        <ui:Label name="dead-sprout-label" text="Dead Sprouts: 0" class="harvest-panel__label" />
+    </ui:VisualElement>
+</ui:UXML>

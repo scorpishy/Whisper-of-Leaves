@@ -1,0 +1,75 @@
+.inventory {
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.inventory__panel {
+    padding: 20px;
+    border-radius: 10px;
+    flex-direction: column;
+    background-color: rgb(67, 40, 37);
+    border-width: 4px;
+    border-color: rgb(43, 15, 17);
+}
+
+.inventory__grid {
+}
+
+.inventory__item {
+    width: 96px;
+    height: 96px;
+    font-size: 24px;
+    background-color: rgb(41, 9, 9);
+    border-radius: 8px;
+    margin: 20px 0;
+    align-items: center;
+    justify-content: center;
+    border-color: rgba(166, 139, 139, 0.36);
+    border-width: 4px;
+    transition-duration: 0.1s;
+    border-left-color: rgba(154, 110, 110, 0.57);
+    border-right-color: rgba(154, 110, 110, 0.57);
+    border-top-color: rgba(154, 110, 110, 0.57);
+    border-bottom-color: rgba(154, 110, 110, 0.57);
+}
+
+.inventory__item:hover {
+    background-color: rgb(59, 14, 14);
+    transition-duration: 0.1s;
+}
+
+.inventory__grid .inventory__item--selected {
+    background-color: rgb(75, 20, 20);
+    transition-duration: 0.1s;
+}
+
+.inventory__icon {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    transition-duration: 0.1s;
+}
+
+.inventory__item:hover .inventory__icon {
+    scale: 1.05 1.05;
+    transition-duration: 0.1s;
+}
+
+.inventory__grid .inventory__item--selected .inventory__icon {
+    scale: 1.1 1.1;
+    transition-duration: 0.1s;
+}
+
+.inventory__icon--seed {
+    background-image: url("project://database/Assets/_Project/Artwork/Fruit.png?fileID=2800000&guid=93db494d70b2a3848bd8e0a383816b29&type=3#Fruit");
+}
+
+.inventory__icon--watering-can {
+    background-image: url("project://database/Assets/_Project/Artwork/Shovel.png?fileID=2800000&guid=82840c0dbd62ce84f8d445afa08271ed&type=3#Shovel");
+}
+
+.inventory__icon--shovel {
+    background-image: url("project://database/Assets/_Project/Artwork/Shovel.png?fileID=2800000&guid=82840c0dbd62ce84f8d445afa08271ed&type=3#Shovel");
+}

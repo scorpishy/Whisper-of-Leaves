@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:Template name="Inventory" src="project://database/Assets/_Project/Scripts/Presentation/Inventory/InventoryUI.uxml?fileID=9197481963319205126&amp;guid=e6ee72d612f1980449565040a36a5357&amp;type=3#InventoryUI" />
+    <ui:Template name="HarvestUI" src="project://database/Assets/_Project/Scripts/Presentation/Harvest/HarvestUI.uxml?fileID=9197481963319205126&amp;guid=e892fc56766ce0746a97fcc270a41767&amp;type=3#HarvestUI" />
+    <Style src="project://database/Assets/_Project/Scripts/Presentation/Common/RootStyles.uss?fileID=7433441132597879392&amp;guid=4c94af5c007362545ac31c1321ca616f&amp;type=3#RootStyles" />
+    <ui:VisualElement name="root" class="root">
+        <ui:Instance template="Inventory" name="inventory" class="inventory" />
+        <ui:Instance template="HarvestUI" name="harvest" class="harvest" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/_Project/Scripts/Presentation/Inventory/InventoryStyles.uss?fileID=7433441132597879392&amp;guid=8ea1d15bc4adf0e4a95f2012e87ed06d&amp;type=3#InventoryStyles" />
+    <ui:VisualElement name="inventory" class="inventory">
+        <ui:VisualElement name="inventory-panel" class="inventory__panel" style="border-top-right-radius: 0; border-bottom-right-radius: 0; border-right-width: 0;">
+            <ui:VisualElement name="inventory-grid" class="inventory__grid">
+                <ui:Button name="seed-button" class="inventory__item">
+                    <ui:VisualElement class="inventory__icon inventory__icon--seed" style="background-image: url(&quot;project://database/Assets/_Project/Artwork/Seed.png?fileID=2800000&amp;guid=9a6c4566fac0886418ba4c338bc7901d&amp;type=3#Seed&quot;);" />
+                </ui:Button>
+                <ui:Button name="watering-can-button" class="inventory__item">
+                    <ui:VisualElement class="inventory__icon inventory__icon--watering-can" style="background-image: url(&quot;project://database/Assets/_Project/Artwork/Watering%20Can.png?fileID=2800000&amp;guid=4facb3e5827f109488ebb9e133eb2ada&amp;type=3#Watering Can&quot;);" />
+                </ui:Button>
+                <ui:Button name="shovel-button" class="inventory__item">
+                    <ui:VisualElement class="inventory__icon inventory__icon--shovel" />
+                </ui:Button>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
