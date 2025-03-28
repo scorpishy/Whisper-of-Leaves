@@ -1,8 +1,9 @@
 using System;
+using Game.Domain.Common;
 
 namespace Game.Domain.Harvest
 {
-    public interface IHarvestedItem
+    public interface IHarvestedItem : IIdentifiable
     {
         HarvestedItemType ItemType { get; }
         int Quantity { get; }

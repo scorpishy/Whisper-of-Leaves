@@ -1,7 +1,10 @@
+using System;
+
 namespace Game.Domain.Plant
 {
     public class Plant : IPlant
     {
+        public Guid Id { get; } = Guid.NewGuid();
         public PlantState State { get; private set; }
 
         public Plant()

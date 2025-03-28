@@ -7,6 +7,8 @@ namespace Game.Domain.Garden
     {
         private readonly Func<IPlant> _plantFactory;
 
+        public Guid Id { get; } = Guid.NewGuid();
+
         public IPlant Plant { get; private set; }
         public bool IsEmpty => Plant == null;
 
