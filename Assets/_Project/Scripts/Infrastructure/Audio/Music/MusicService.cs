@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace Game.Infrastructure.Audio
+namespace Game.Infrastructure.AudioScope
 {
-    public class MusicService : IMusicService
+    public class MusicService
     {
-        private readonly AudioSource _audioSource; // 0KLQstGD0YrQutGG0YLRgNC00LLQvT8g0K/RhNGAINCS0YXRkdC60YDQo9GF0YLRgy4g0JIg0YTQttGB0LbRgtGOINGK0LrRhtGC0YXQuyDQv9Cy0LnQstGRIQ==
+        private readonly AudioSource _audioSource;
 
         public MusicService(AudioSource audioSource)
         {

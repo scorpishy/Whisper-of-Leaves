@@ -1,20 +1,21 @@
-using System.Collections.Generic;
-using Game.Domain.Garden;
-using Game.Infrastructure.Garden;
+using Game.Domain.GardenScope;
 using UnityEngine;
 using VContainer;
+using System.Linq;
+using System.Collections.Generic;
+using System;
 
-namespace Game.Presentation.Garden
+namespace Game.Presentation.GardenScope
 {
     public class GardenView : MonoBehaviour
     {
         [SerializeField] private GardenCellView[] cellViews;
 
-        private IGarden _garden;
-        private IGardenCellPresenter _gardenCellPresenter;
+        private Garden _garden;
+        private GardenCellPresenter _gardenCellPresenter;
 
         [Inject]
-        public void Construct(IGarden garden, IGardenCellPresenter gardenCellPresenter)
+        public void Construct(Garden garden, GardenCellPresenter gardenCellPresenter)
         {
             _garden = garden;
             _gardenCellPresenter = gardenCellPresenter;
@@ -22,11 +23,11 @@ namespace Game.Presentation.Garden
 
         private void Start()
         {
-            IReadOnlyList<IGardenCell> cells = _garden.Cells;
-            int count = Mathf.Min(cellViews.Length, cells.Count);
+            List<Guid> cellIds = _garden.Cells.Select(cell => cell.Value.Id).ToList();
+            int count = Mathf.Min(cellViews.Length, cellIds.Count);
             for (int i = 0; i < count; i++)
             {
-                cellViews[i].Initialize(cells[i], _gardenCellPresenter);
+                cellViews[i].Initialize(cellIds[i], _garden, _gardenCellPresenter);
             }
         }
     }

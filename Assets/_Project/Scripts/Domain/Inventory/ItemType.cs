@@ -1,4 +1,4 @@
-namespace Game.Domain.Inventory
+namespace Game.Domain.InventoryScope
 {
     public enum ItemType
     {

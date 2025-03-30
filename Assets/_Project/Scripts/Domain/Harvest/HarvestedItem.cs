@@ -1,25 +1,22 @@
 using System;
+using Game.Domain.CommonScope;
 
-namespace Game.Domain.Harvest
+namespace Game.Domain.HarvestScope
 {
-    public class HarvestedItem : IHarvestedItem
+    public class HarvestedItem : IIdentifiable
     {
         public Guid Id { get; } = Guid.NewGuid();
-
         public HarvestedItemType ItemType { get; }
         public int Quantity { get; private set; }
 
         public event Action<int> OnQuantityChanged;
 
-        public HarvestedItem(HarvestedItemType itemType, int quantity = 0)
-        {
-            ItemType = itemType;
-            Quantity = quantity;
-        }
+        public HarvestedItem(HarvestedItemType itemType) => ItemType = itemType;
 
-        public void Add(int count)
+        public void Add(int quantity)
         {
-            Quantity += count;
+            if (quantity < 0) throw new ArgumentException("Quantity cannot be negative");
+            Quantity += quantity;
             OnQuantityChanged?.Invoke(Quantity);
         }
     }

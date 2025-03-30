@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Game.Infrastructure.Audio
+namespace Game.Infrastructure.AudioScope
 {
-    public class SFXService : ISFXService
+    public class SFXService
     {
         private readonly AudioSource _sfxSource;
 

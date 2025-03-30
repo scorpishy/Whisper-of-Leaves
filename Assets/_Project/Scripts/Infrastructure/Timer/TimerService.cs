@@ -1,10 +1,10 @@
 using System;
-using Game.Application.Timer;
+using Game.Application.TimerScope;
 using UniRx;
 
-namespace Game.Infrastructure.Timer
+namespace Game.Infrastructure.TimerScope
 {
-    public class TimerService : ITimerService
+    public class TimerService : ITimer
     {
         public void StartTimer(float duration, Action onComplete)
         {

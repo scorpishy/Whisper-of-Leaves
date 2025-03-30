@@ -2,8 +2,9 @@ using VContainer;
 using VContainer.Unity;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Game.Application.Timer;
-using Game.Infrastructure.Timer;
+using Game.Application.TimerScope;
+using Game.Infrastructure.TimerScope;
+using Game.Infrastructure.InputScope;
 
 namespace Game.EntryPoint.DI
 {
@@ -12,7 +13,7 @@ namespace Game.EntryPoint.DI
         [SerializeField] private GardenInstaller _gardenInstaller;
         [SerializeField] private InventoryInstaller _inventoryInstaller;
         [SerializeField] private HarvestInstaller _harvestInstaller;
-        [SerializeField] private PlantInstaller _plantInstaller;
+        [SerializeField] private InputInstaller _inputInstaller;
         [SerializeField] private AudioInstaller _audioInstaller;
 
         protected override void Configure(IContainerBuilder builder)
@@ -20,8 +21,8 @@ namespace Game.EntryPoint.DI
             _gardenInstaller.Install(builder);
             _inventoryInstaller.Install(builder);
             _harvestInstaller.Install(builder);
-            _plantInstaller.Install(builder);
             _audioInstaller.Install(builder);
+            _inputInstaller.Install(builder);
 
             RegisterCommons(builder);
         }
@@ -29,8 +30,7 @@ namespace Game.EntryPoint.DI
         private void RegisterCommons(IContainerBuilder builder)
         {
             builder.RegisterComponentInHierarchy<UIDocument>();
-            builder.Register<SystemInputActions>(Lifetime.Singleton);
-            builder.Register<ITimerService, TimerService>(Lifetime.Singleton);
+            builder.Register<ITimer, TimerService>(Lifetime.Singleton);
         }
     }
 }

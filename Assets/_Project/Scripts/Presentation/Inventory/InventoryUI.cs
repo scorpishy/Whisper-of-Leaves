@@ -1,25 +1,24 @@
-using Game.Domain.Inventory;
 using UnityEngine;
 using UnityEngine.UIElements;
-using UniRx;
 using VContainer;
+using UniRx;
 using System.Collections.Generic;
-using Game.Infrastructure.Inventory;
+using Game.Domain.InventoryScope;
 
-namespace Game.Presentation.Inventory
+namespace Game.Presentation.InventoryScope
 {
     public class InventoryUI : MonoBehaviour
     {
         private UIDocument _uiDocument;
-        private IInventoryPresenter _inventoryPresenter;
+        private InventoryPresenter _presenter;
         private readonly Dictionary<ItemType, Button> _buttons = new();
         private readonly CompositeDisposable _disposables = new();
 
         [Inject]
-        public void Construct(UIDocument uiDocument, IInventoryPresenter inventoryPresenter)
+        public void Construct(UIDocument uiDocument, InventoryPresenter presenter)
         {
             _uiDocument = uiDocument;
-            _inventoryPresenter = inventoryPresenter;
+            _presenter = presenter;
         }
 
         private void Awake()
@@ -31,38 +30,48 @@ namespace Game.Presentation.Inventory
             _buttons[ItemType.Shovel] = root.Q<Button>("shovel-button");
 
             SubscribeToUI();
+            SubscribeToPresenter();
         }
 
         private void SubscribeToUI()
         {
-            foreach ((ItemType itemType, Button button) in _buttons)
+            foreach (var pair in _buttons)
             {
+                var itemType = pair.Key;
+                var button = pair.Value;
+
                 Observable.FromEvent(
-                    h => button.clicked += h,
-                    h => button.clicked -= h
+                    handler => button.clicked += handler,
+                    handler => button.clicked -= handler
                 )
-                .Subscribe(_ => _inventoryPresenter.OnItemClicked(itemType))
+                .Subscribe(_ => _presenter.OnItemClicked(itemType))
                 .AddTo(_disposables);
             }
+        }
 
-            _inventoryPresenter.SelectedItemObservable
+        private void SubscribeToPresenter()
+        {
+            _presenter.SelectedItemChanged
                 .Subscribe(UpdateSelection)
                 .AddTo(_disposables);
         }
 
         private void UpdateSelection(ItemType selectedItem)
         {
-            foreach (Button button in _buttons.Values)
+            foreach (var button in _buttons.Values)
             {
                 button.RemoveFromClassList("inventory__item--selected");
             }
 
-            if (_buttons.TryGetValue(selectedItem, out Button selectedButton))
+            if (_buttons.TryGetValue(selectedItem, out var selectedButton))
             {
                 selectedButton.AddToClassList("inventory__item--selected");
             }
         }
 
-        private void OnDestroy() => _disposables.Dispose();
+        private void OnDestroy()
+        {
+            _disposables.Dispose();
+        }
     }
 }

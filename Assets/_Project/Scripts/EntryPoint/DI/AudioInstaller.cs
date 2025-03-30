@@ -1,5 +1,4 @@
-using Game.Infrastructure.Audio;
-using Game.Infrastructure.Configs;
+using Game.Infrastructure.AudioScope;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -13,21 +12,21 @@ namespace Game.EntryPoint.DI
         [SerializeField] private AudioSource _sfxSource;
 
         [Header("Audio Configs")]
-        [SerializeField] private PlantSFXConfig _plantSFXConfig;
+        [SerializeField] private GardenSFXConfig _plantSFXConfig;
 
         public void Install(IContainerBuilder builder)
         {
-            builder.Register<IMusicService, MusicService>(Lifetime.Singleton)
+            builder.Register<MusicService>(Lifetime.Singleton)
                    .WithParameter(_musicSource);
 
-            builder.Register<ISFXService, SFXService>(Lifetime.Singleton)
+            builder.Register<SFXService>(Lifetime.Singleton)
                    .WithParameter(_sfxSource);
 
-            builder.Register<PlantSFXService>(Lifetime.Singleton)
+            builder.Register<GardenSFXHandler>(Lifetime.Singleton)
                    .WithParameter(_plantSFXConfig)
                    .Build();
 
-            builder.RegisterBuildCallback(container => container.Resolve<PlantSFXService>());
+            builder.RegisterBuildCallback(container => container.Resolve<GardenSFXHandler>());
         }
     }
 }

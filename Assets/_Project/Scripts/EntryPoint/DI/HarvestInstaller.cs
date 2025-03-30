@@ -1,6 +1,7 @@
-using Game.Domain.Harvest;
-using Game.Infrastructure.Harvest;
-using Game.Presentation.Harvest;
+using Game.Application.HarvestScope;
+using Game.Domain.HarvestScope;
+using Game.Infrastructure.HarvestScope;
+using Game.Presentation.HarvestScope;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -11,8 +12,10 @@ namespace Game.EntryPoint.DI
     {
         public void Install(IContainerBuilder builder)
         {
-            builder.Register<IHarvestService, HarvestService>(Lifetime.Singleton);
-            builder.RegisterFactory<HarvestedItemType, IHarvestedItem>((type) => new HarvestedItem(type));
+            builder.RegisterFactory<HarvestedItemType, HarvestedItem>((type) => new HarvestedItem(type));
+            builder.Register<HarvestInteractor>(Lifetime.Singleton);
+            builder.Register<IHarvestRepository, HarvestRepository>(Lifetime.Singleton);
+            builder.RegisterEntryPoint<HarvestPresenter>(Lifetime.Singleton);
             builder.RegisterComponentInHierarchy<HarvestPanelUI>();
         }
     }

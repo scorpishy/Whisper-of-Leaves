@@ -1,8 +1,6 @@
-using System.Collections.Generic;
-using Game.Domain.Garden;
-using Game.Domain.Plant;
-using Game.Infrastructure.Garden;
-using Game.Presentation.Garden;
+using Game.Application.GardenScope;
+using Game.Domain.GardenScope;
+using Game.Presentation.GardenScope;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -11,32 +9,24 @@ namespace Game.EntryPoint.DI
 {
     public class GardenInstaller : MonoBehaviour, IInstaller
     {
-        [SerializeField] private int _rows = 3;
-        [SerializeField] private int _columns = 3;
-
         public void Install(IContainerBuilder builder)
         {
-            List<IGardenCell> gardenCells = CreateGardenCells(_rows, _columns);
-
-            builder.Register<IGarden, Garden>(Lifetime.Singleton)
-                   .WithParameter<IEnumerable<IGardenCell>>(gardenCells);
-
-            builder.Register<IGardenCellPresenter, GardenCellPresenter>(Lifetime.Singleton);
-
+            builder.Register<Garden>(Lifetime.Singleton);
+            builder.Register<GardenCellPresenter>(Lifetime.Singleton);
+            builder.RegisterFactory(() => new GardenCell(() => new Plant()));
             builder.RegisterComponentInHierarchy<GardenView>();
+            builder.Register<PlantRemovedHandler>(Lifetime.Singleton);
+            builder.RegisterBuildCallback(container => container.Resolve<PlantRemovedHandler>());
+
+            RegisterPlantInteractors(builder);
         }
 
-        private List<IGardenCell> CreateGardenCells(int rows, int columns)
+        private void RegisterPlantInteractors(IContainerBuilder builder)
         {
-            List<IGardenCell> gardenCells = new List<IGardenCell>(rows * columns);
-
-            for (int i = 0; i < rows * columns; i++)
-            {
-                GardenCell cell = new GardenCell(() => new Plant());
-                gardenCells.Add(cell);
-            }
-
-            return gardenCells;
+            builder.Register<PlantSeedInteractor>(Lifetime.Singleton);
+            builder.Register<WaterPlantInteractor>(Lifetime.Singleton);
+            builder.Register<RemovePlantInteractor>(Lifetime.Singleton);
+            builder.Register<GrowPlantInteractor>(Lifetime.Singleton);
         }
     }
 }

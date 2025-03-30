@@ -1,6 +1,6 @@
 using System;
 
-namespace Game.Domain.Common
+namespace Game.Domain.CommonScope
 {
     public interface IIdentifiable
     {
