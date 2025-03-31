@@ -59,9 +59,18 @@
     "dotnet.defaultSolution": "Test Garden.sln",
     "cSpell.words": [
         "Behaviour",
+        "CBUFFER",
+        "CGPROGRAM",
+        "ENDCG",
+        "ENDHLSL",
+        "hlsl",
+        "HLSLPROGRAM",
         "Initializable",
+        "inout",
         "ISFX",
+        "lerp",
         "Mathf",
-        "UXML"
+        "UXML",
+        "Varyings"
     ]
 }

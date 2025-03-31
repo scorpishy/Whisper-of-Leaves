@@ -19,6 +19,7 @@ namespace Game.Presentation.GardenScope
         private Guid _cellId;
         private Garden _garden;
         private GardenCellPresenter _gardenCellPresenter;
+        private Material _material;
         private readonly CompositeDisposable _disposables = new();
 
         public void Initialize(Guid cellId, Garden garden, GardenCellPresenter presenter)
@@ -38,6 +39,9 @@ namespace Game.Presentation.GardenScope
 
             if (_spriteRenderer == null)
                 Debug.LogError($"{nameof(SpriteRenderer)} is missing on {gameObject.name}!");
+
+            _material = new Material(_spriteRenderer.material);
+            _spriteRenderer.material = _material;
         }
 
         private void OnMouseDown()
@@ -66,6 +70,9 @@ namespace Game.Presentation.GardenScope
                 PlantState.Fruit => _fruitSprite,
                 _ => null
             };
+
+            bool isHighlighted = state == PlantState.Fruit;
+            _material.SetFloat("_HighlightEnabled", isHighlighted ? 1 : 0);
         }
 
         private void OnDestroy() => _disposables.Dispose();
