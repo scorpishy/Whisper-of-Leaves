@@ -45,7 +45,7 @@ namespace Game.Presentation.InventoryScope
 
         public void OnItemClicked(ItemType item)
         {
-            var currentItem = _selectedItemInteractor.SelectedItem;
+            ItemType currentItem = _selectedItemInteractor.SelectedItem;
             _selectedItemInteractor.SetSelectedItem(currentItem == item ? ItemType.None : item);
         }
 

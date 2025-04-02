@@ -35,10 +35,10 @@ namespace Game.Presentation.InventoryScope
 
         private void SubscribeToUI()
         {
-            foreach (var pair in _buttons)
+            foreach (KeyValuePair<ItemType, Button> pair in _buttons)
             {
-                var itemType = pair.Key;
-                var button = pair.Value;
+                ItemType itemType = pair.Key;
+                Button button = pair.Value;
 
                 Observable.FromEvent(
                     handler => button.clicked += handler,
@@ -58,12 +58,12 @@ namespace Game.Presentation.InventoryScope
 
         private void UpdateSelection(ItemType selectedItem)
         {
-            foreach (var button in _buttons.Values)
+            foreach (Button button in _buttons.Values)
             {
                 button.RemoveFromClassList("inventory__item--selected");
             }
 
-            if (_buttons.TryGetValue(selectedItem, out var selectedButton))
+            if (_buttons.TryGetValue(selectedItem, out Button selectedButton))
             {
                 selectedButton.AddToClassList("inventory__item--selected");
             }
